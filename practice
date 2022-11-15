@@ -1,0 +1,28 @@
+
+     
+
+USER postgres
+RUN    /etc/init.d/postgresql start &&\
+    psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';" &&\
+    createdb -O docker docker
+RUN /etc/init.d/postgresql restart
+RUN /etc/init.d/postgresql start
+RUN chmod 777 -R /var/run/postgresql/postgress
+RUN /etc/init.d/postgresql restart
+
+NODEJS
+
+
+SONARQUBE INSTALLATION
+
+
+
+sudo su -
+cd /opt
+apt install wget unzip -y
+apt install openjdk-11-jre-headless 
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.1.44547.zip
+ unzip sonarqube-8.9.1.44547.zip
+useradd sonar
+ chown -R sonar:sonar /opt/sonarqube-8.9.1.44547/
+ chmod -R 775 /opt/sonarqube-8.9.
